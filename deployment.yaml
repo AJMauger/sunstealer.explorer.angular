@@ -1,0 +1,63 @@
+# kubectl apply -f deployment.yamlsunstealer-explorer-angular
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sunstealer-explorer-angular
+  labels:
+    app: sunstealer-explorer-angular
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sunstealer-explorer-angular
+  template:
+    metadata:
+      labels:
+        app: sunstealer-explorer-angular
+    spec:
+      imagePullSecrets:
+        - name: docker
+      containers:
+        - name: sunstealer-explorer-angular
+          image: ajmfco37-01.ajm.net:5000/sunstealer-explorer-angular:latest
+          env:
+          ports:
+            - containerPort: 8080
+              name: w3
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sunstealer-explorer-angular
+spec:
+  selector:
+    app: sunstealer-explorer-angular
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: sunstealer-explorer-angular
+  namespace: default
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts: 
+      - "*.ajm.net"
+      secretName: sunstealer
+  rules:
+    - host: "*.ajm.net"
+      http:
+        paths:
+          - path: /sunstealer-explorer-angular(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: sunstealer-explorer-angular
+                port:
+                  number: 8080
