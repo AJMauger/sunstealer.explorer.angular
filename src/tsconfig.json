@@ -1,0 +1,33 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "module": "preserve",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "assert": ["./node_modules/assert"],
+      "buffer": ["./node_modules/buffer-browserify"],
+      "crypto": ["./node_modules/crypto-browserify"],
+      "stream": ["./node_modules/stream-browserify"]
+    },
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "typeCheckHostBindings": true,
+    "strictTemplates": true
+  },
+  "exclude": ["node_modules", "src/server"],
+  "include": ["src/client"]
+}

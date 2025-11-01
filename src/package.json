@@ -1,0 +1,79 @@
+{
+  "name": "sunstealer-explorer-angular",
+  "version": "0.0.0",
+  "browser": {
+    "stream": "stream-browserify"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start:dev": "ng serve --open --host 0.0.0.0 --port 8080 --disable-host-check",
+    "build": "run-script-os",
+    "build:linux": "npm run clean && ng build --source-map && tsc --project ./src/server/tsconfig.json && cp ./src/server/*.js ./dist && mv ./dist/browser/* ./dist && rm -rf ./dist/browser",
+    "build:win32": "npm run clean && ng build --source-map && tsc --project ./src/server/tsconfig.json && copy .\\src\\server\\*.js .\\dist && xcopy .\\dist\\browser .\\dist /E /H /K && rmdir /S /Q .\\dist\\browser",
+    "clean": "run-script-os",
+    "clean:linux": "rm -rf dist/* && rm src/server/index.js || true",
+    "clean:win32": "rmdir .\\dist /s /q && del .\\src\\server\\*.js && md dist",
+    "start": "node ./dist/index.js",
+    "watch": "ng build --watch --configuration development"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^20.0.0",
+    "@angular-devkit/build-angular": "^20.3.6",
+    "@angular/animations": "^20.3.6",
+    "@angular/cdk": "^20.2.9",
+    "@angular/cli": "^20.3.6",
+    "@angular/common": "^20.3.6",
+    "@angular/compiler": "^20.3.6",
+    "@angular/compiler-cli": "^20.3.6",
+    "@angular/core": "^20.3.6",
+    "@angular/forms": "^20.3.6",
+    "@angular/material": "^20.2.9",
+    "@angular/platform-browser": "^20.3.6",
+    "@angular/platform-browser-dynamic": "^20.3.6",
+    "@angular/router": "^20.3.6",
+    "@auth0/angular-jwt": "^5.2.0",
+    "@ibm/plex": "^6.4.1",
+    "@ngrx/effects": "^20.0.1",
+    "@ngrx/router-store": "^20.0.1",
+    "@ngrx/store": "^20.0.1",
+    "@ngrx/store-devtools": "^20.0.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.8.1",
+    "@types/web-push": "^3.6.4",
+    "assert": "^2.1.0",
+    "body-parser": "^2.2.0",
+    "buffer": "^6.0.3",
+    "buffer-browserify": "^0.2.5",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.1",
+    "express": "^5.1.0",
+    "process": "^0.11.10",
+    "run-script-os": "^1.1.6",
+    "rxjs": "~7.8.2",
+    "stream": "^0.0.3",
+    "stream-browserify": "^3.0.0",
+    "tslib": "^2.8.1",
+    "typescript": "~5.9.3",
+    "util": "^0.12.5",
+    "web-push": "^3.6.7",
+    "zone.js": "~0.15.1"
+  },
+  "dependencies": {
+    "@angular/material-date-fns-adapter": "^20.2.10",
+    "@angular/material-moment-adapter": "^20.2.10",
+    "date-fns": "^4.1.0"
+  }
+}
