@@ -6,9 +6,7 @@ import { LoggerService } from "../services/logger.service";
 
 @Component({
   selector: "home",
-  template: `<pre style="height: calc(100vh - 36px); overflowY: auto;">
-      {{ this.identity.discovery ? JSON.stringify(this.identity.discovery, null, 2) : "" }}
-    </pre>`,
+  template: `<pre style="font-size: 12px; height: calc(100vh - 36px); overflowY: auto;">{{ this.identity?.discovery ? JSON.stringify(this.identity.discovery, null, 2) : "!discovery" }}</pre>`,
   styles: []
 })
 

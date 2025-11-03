@@ -7,11 +7,11 @@ import { LoggerService } from "../services/logger.service";
 
 @Component({
   selector: "authorization",
-  template: `<div style="height: calc(100vh - 36px); overflow-y: auto; width: 100vw;">
+  template: `<div style="font-size: 12px; height: calc(100vh - 36px); overflow-y: auto; width: 100vw;">
     <table cell-padding={2} style="width: 99vw;">
       <thead>
         <tr style="height: 32px;">
-          <th style="width: 100px;">Key</th>
+          <th style="width: 60px;">Key</th>
           <th style="width: 1000px;">Value</th>
         </tr>
       </thead>
